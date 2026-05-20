@@ -13,12 +13,13 @@ use Filament\Panel;
 
 class User extends Authenticatable implements FilamentUser
 {
+    use HasApiTokens, HasFactory, Notifiable;
+
     public function canAccessPanel(Panel $panel): bool
     {
-        // Mengizinkan semua akun yang ada di database untuk masuk ke panel
-        return true; 
+        // Hanya mengizinkan email admin@admin.com untuk masuk ke panel admin
+        return $this->email === 'admin@admin.com';
     }
-    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
