@@ -58,14 +58,24 @@ Route::get('/setup-database', function () {
     }
     \Illuminate\Support\Facades\Artisan::call('migrate:fresh', ['--force' => true]);
     
-    // Create first admin user automatically if using Filament/Breeze, etc.
-    // Assuming standard User model:
-    if (!\App\Models\User::where('email', 'admin@admin.com')->exists()) {
-        \App\Models\User::create([
-            'name' => 'Admin',
-            'email' => 'admin@admin.com',
-            'password' => bcrypt('password')
-        ]);
-    }
-    return 'Database migrated and admin user created (admin@admin.com / password)!';
+    \App\Models\User::create([
+        'name' => 'Admin',
+        'email' => 'admin@admin.com',
+        'password' => bcrypt('fajri125#')
+    ]);
+    return 'Database migrated and admin user created (admin@admin.com / fajri125#)!';
 });
+
+// Temporary route to reset admin password securely
+Route::get('/reset-password', function () {
+    if (request('key') !== env('APP_KEY')) {
+        abort(403, 'Unauthorized');
+    }
+    $user = \App\Models\User::where('email', 'admin@admin.com')->first();
+    if (!$user) {
+        return 'User not found!';
+    }
+    $user->update(['password' => bcrypt('fajri125#')]);
+    return 'Password berhasil diubah! Login dengan: admin@admin.com / fajri125#';
+});
+
