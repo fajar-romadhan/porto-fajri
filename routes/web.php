@@ -66,6 +66,15 @@ Route::get('/setup-database', function () {
     return 'Database migrated and admin user created (admin@admin.com / fajri125#)!';
 });
 
+// Route to run regular migrations safely on Vercel without losing data
+Route::get('/run-migrations', function () {
+    if (request('key') !== 'fajri125#' && request('key') !== env('APP_KEY')) {
+        abort(403, 'Unauthorized');
+    }
+    \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+    return 'Migrations run successfully!<br>Output: <pre>' . \Illuminate\Support\Facades\Artisan::output() . '</pre>';
+});
+
 // Temporary route to reset admin password securely
 Route::get('/reset-password', function () {
     if (request('key') !== env('APP_KEY')) {
