@@ -77,7 +77,7 @@ Route::get('/run-migrations', function () {
 
 // Temporary route to reset admin password securely
 Route::get('/reset-password', function () {
-    if (request('key') !== 'fajri125#' && request('key') !== env('APP_KEY')) {
+    if (request('key') !== 'resetadmin2026') {
         abort(403, 'Unauthorized');
     }
     $user = \App\Models\User::where('email', 'admin@admin.com')->first();
