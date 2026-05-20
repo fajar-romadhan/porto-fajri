@@ -109,6 +109,15 @@ Route::get('/check-s3', function () {
         $testFile = 'test-connection-' . time() . '.txt';
         $disk->put($testFile, 'S3 connection OK');
         $exists = $disk->exists($testFile);
+        
+        // Test temporary URL generation
+        try {
+            $tempUrl = $disk->temporaryUrl($testFile, now()->addMinutes(5));
+            $results['s3_temp_url'] = $tempUrl;
+        } catch (\Throwable $tempError) {
+            $results['s3_temp_url'] = 'ERROR: ' . $tempError->getMessage();
+        }
+
         $disk->delete($testFile);
         $results['s3_write_test'] = $exists ? 'SUCCESS' : 'FAILED (file not found after write)';
     } catch (\Throwable $e) {
