@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /kelola
+Disallow: /kelola/*
+Disallow: /storage/backgrounds/
+
+Allow: /
+Allow: /storage/photos/
+Allow: /sitemap.xml
+
+# PENTING: Ganti URL di bawah ini dengan domain production Anda sebelum deploy
+Sitemap: https://yourdomain.com/sitemap.xml
