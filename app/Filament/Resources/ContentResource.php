@@ -45,7 +45,7 @@ class ContentResource extends Resource
 
                 Forms\Components\FileUpload::make('image_path')
                     ->label('Foto / Gambar Latar')
-                    ->helperText('Upload gambar (JPG, PNG, WebP). Untuk hero, bisa upload hingga 5 foto (akan jadi slideshow otomatis). Max 10MB per foto.')
+                    ->helperText('Upload gambar (JPG, PNG, WebP). Maksimal 4MB per foto (otomatis dikompres ke resolusi HD 1920x1080 px agar loading website tetap ringan).')
                     ->disk('s3')
                     ->visibility('public')
                     ->image()
@@ -54,9 +54,11 @@ class ContentResource extends Resource
                     ->maxFiles(5)
                     ->reorderable()
                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
-                    ->maxSize(10240) // 10MB in kilobytes
+                    ->maxSize(4096) // 4MB limit to safely fit within Vercel's 4.5MB payload limit
                     ->columnSpanFull()
-                    ->imageResizeMode('cover'),
+                    ->imageResizeMode('cover')
+                    ->imageResizeTargetWidth('1920')
+                    ->imageResizeTargetHeight('1080'),
             ]);
     }
 

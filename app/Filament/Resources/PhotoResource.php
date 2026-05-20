@@ -39,15 +39,17 @@ class PhotoResource extends Resource
 
                 Forms\Components\FileUpload::make('image_path')
                     ->label('Upload Foto')
-                    ->helperText('Upload foto dalam format JPG, PNG, atau WebP. Ukuran maksimal 5MB.')
+                    ->helperText('Upload foto dalam format JPG, PNG, atau WebP. Maksimal 4MB (otomatis dikompres ke 1200x1500 px agar loading website instan).')
                     ->disk('s3')
                     ->visibility('public')
                     ->image()
                     ->directory('photos')
                     ->imageResizeMode('cover')
                     ->imageCropAspectRatio('4:5')
+                    ->imageResizeTargetWidth('1200')
+                    ->imageResizeTargetHeight('1500')
                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
-                    ->maxSize(5120) // 5MB in kilobytes
+                    ->maxSize(4096) // 4MB limit to safely fit within Vercel's 4.5MB payload limit
                     ->required(),
 
                 Forms\Components\TextInput::make('order_column')
