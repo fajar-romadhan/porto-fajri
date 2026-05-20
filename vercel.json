@@ -60,6 +60,10 @@
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie",
         "FILESYSTEM_DISK": "s3",
+        "AWS_DEFAULT_REGION": "ap-south-1",
+        "AWS_BUCKET": "porto",
+        "AWS_ENDPOINT": "https://zzzrqowztfmcbudvbqzv.supabase.co/storage/v1/s3",
+        "AWS_USE_PATH_STYLE_ENDPOINT": "true",
         "AWS_URL": "https://zzzrqowztfmcbudvbqzv.supabase.co/storage/v1/object/public/porto"
     }
 }
