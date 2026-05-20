@@ -76,6 +76,10 @@ Route::get('/run-migrations', function () {
 });
 
 // Temporary route to reset admin password securely
+Route::get('/ping-deploy', function () {
+    return 'deploy-success-2026';
+});
+
 Route::get('/reset-password', function () {
     if (request('key') !== 'resetadmin2026') {
         abort(403, 'Unauthorized');
