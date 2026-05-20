@@ -48,8 +48,10 @@
         }
     ],
     "env": {
+        "APP_NAME": "Fajri Photography",
         "APP_ENV": "production",
         "APP_DEBUG": "false",
+        "APP_KEY": "base64:FQ4BlI+65TM9JfE3cOYDlu9UMcYQZ/+Wic1gppMx4es=",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_PACKAGES_CACHE": "/tmp/packages.php",
@@ -59,6 +61,8 @@
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie",
+        "SESSION_SECURE_COOKIE": "true",
+        "SESSION_DOMAIN": "porto-fajri.vercel.app",
         "FILESYSTEM_DISK": "s3",
         "AWS_DEFAULT_REGION": "ap-south-1",
         "AWS_BUCKET": "porto",
