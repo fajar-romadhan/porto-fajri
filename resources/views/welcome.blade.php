@@ -208,8 +208,19 @@
             const photosByCategory = {!! json_encode($photosJson) !!};
         </script>
 
+        @php
+            $aboutBgUrl = '';
+            if (isset($contents['about_bg']->image_path)) {
+                $aboutBgPath = is_array($contents['about_bg']->image_path) 
+                    ? ($contents['about_bg']->image_path[0] ?? '') 
+                    : $contents['about_bg']->image_path;
+                if ($aboutBgPath) {
+                    $aboutBgUrl = \Illuminate\Support\Facades\Storage::disk('s3')->url($aboutBgPath);
+                }
+            }
+        @endphp
         <!-- About Section -->
-        <section id="about" class="about-section fade-in-section" style="background-image: url('{{ isset($contents['about_bg']->image_path) ? \Illuminate\Support\Facades\Storage::disk('s3')->url(is_array($contents['about_bg']->image_path) ? ($contents['about_bg']->image_path[0] ?? '') : $contents['about_bg']->image_path) : 'none' }}'); background-size: cover; background-position: center;">
+        <section id="about" class="about-section fade-in-section" {!! $aboutBgUrl ? 'style="background-image: url(\'' . $aboutBgUrl . '\'); background-size: cover; background-position: center;"' : '' !!}>
             <div class="about-overlay"></div>
             <div class="about-content">
                 <h2 class="section-title">About the Lens</h2>
