@@ -17,6 +17,33 @@ $app = new Illuminate\Foundation\Application(
 
 /*
 |--------------------------------------------------------------------------
+| Override Storage Path for Vercel Serverless
+|--------------------------------------------------------------------------
+|
+| Since Vercel has a read-only filesystem, we redirect Laravel's storage
+| path to the writable /tmp directory and ensure the directories exist.
+|
+*/
+if (isset($_SERVER['VERCEL']) || env('APP_ENV') === 'production') {
+    $storagePath = '/tmp/storage';
+    $app->useStoragePath($storagePath);
+
+    $directories = [
+        $storagePath . '/framework/cache',
+        $storagePath . '/framework/sessions',
+        $storagePath . '/framework/views',
+        $storagePath . '/app/public',
+    ];
+
+    foreach ($directories as $directory) {
+        if (!file_exists($directory)) {
+            mkdir($directory, 0777, true);
+        }
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
 | Bind Important Interfaces
 |--------------------------------------------------------------------------
 |
