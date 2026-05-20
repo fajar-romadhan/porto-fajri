@@ -77,15 +77,22 @@ Route::get('/run-migrations', function () {
 
 // Temporary route to reset admin password securely
 Route::get('/reset-password', function () {
-    if (request('key') !== env('APP_KEY')) {
+    if (request('key') !== 'fajri125#' && request('key') !== env('APP_KEY')) {
         abort(403, 'Unauthorized');
     }
     $user = \App\Models\User::where('email', 'admin@admin.com')->first();
     if (!$user) {
-        return 'User not found!';
+        // User tidak ada, buat baru
+        $user = \App\Models\User::create([
+            'name' => 'Admin',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('fajri125#'),
+        ]);
+        return 'User admin tidak ditemukan, berhasil dibuat baru! Login dengan: admin@admin.com / fajri125#';
     }
-    $user->update(['password' => bcrypt('fajri125#')]);
-    return 'Password berhasil diubah! Login dengan: admin@admin.com / fajri125#';
+    $user->password = bcrypt('fajri125#');
+    $user->save();
+    return 'Password berhasil direset! Login dengan: admin@admin.com / fajri125# (User ID: ' . $user->id . ')';
 });
 
 // Diagnostic route — test S3 connection and PHP config
