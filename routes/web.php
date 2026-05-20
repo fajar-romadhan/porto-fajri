@@ -93,6 +93,7 @@ Route::get('/check-s3', function () {
     $results['post_max_size']       = ini_get('post_max_size');
     $results['upload_tmp_dir']      = ini_get('upload_tmp_dir') ?: sys_get_temp_dir();
     $results['tmp_writable']        = is_writable(sys_get_temp_dir());
+    $results['fileinfo_enabled']    = extension_loaded('fileinfo');
 
     // Env vars
     $results['FILESYSTEM_DISK']           = env('FILESYSTEM_DISK');
