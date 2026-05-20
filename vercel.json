@@ -66,6 +66,8 @@
         "AWS_USE_PATH_STYLE_ENDPOINT": "true",
         "AWS_URL": "https://zzzrqowztfmcbudvbqzv.supabase.co/storage/v1/object/public/porto",
         "APP_URL": "https://porto-fajri.vercel.app",
-        "ASSET_URL": "https://porto-fajri.vercel.app"
+        "ASSET_URL": "https://porto-fajri.vercel.app",
+        "AWS_ACCESS_KEY_ID": "13331be0be8bf615a45adbf1fa6549f2",
+        "AWS_SECRET_ACCESS_KEY": "f1a3ae4077c9725b4ef6b30c4b3b80e04bb6a03a88d2f2b3d4e769756202cc2b"
     }
 }
