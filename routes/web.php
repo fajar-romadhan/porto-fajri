@@ -108,7 +108,7 @@ Route::get('/check-s3', function () {
     try {
         $disk = \Illuminate\Support\Facades\Storage::disk('s3');
         $testFile = 'test-connection-' . time() . '.txt';
-        $disk->put($testFile, 'S3 connection OK');
+        $disk->put($testFile, 'S3 connection OK', 'public');
         $exists = $disk->exists($testFile);
         
         // Test temporary URL generation
