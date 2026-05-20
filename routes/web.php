@@ -50,3 +50,22 @@ Route::get('/sitemap.xml', function () {
         ->header('Content-Type', 'application/xml')
         ->header('Cache-Control', 'public, max-age=3600');
 })->name('sitemap');
+
+// Temporary route to run migrations on Vercel securely
+Route::get('/setup-database', function () {
+    if (request('key') !== env('APP_KEY')) {
+        abort(403, 'Unauthorized');
+    }
+    \Illuminate\Support\Facades\Artisan::call('migrate:fresh', ['--force' => true]);
+    
+    // Create first admin user automatically if using Filament/Breeze, etc.
+    // Assuming standard User model:
+    if (!\App\Models\User::where('email', 'admin@admin.com')->exists()) {
+        \App\Models\User::create([
+            'name' => 'Admin',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('password')
+        ]);
+    }
+    return 'Database migrated and admin user created (admin@admin.com / password)!';
+});
