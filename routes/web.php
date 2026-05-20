@@ -79,3 +79,43 @@ Route::get('/reset-password', function () {
     return 'Password berhasil diubah! Login dengan: admin@admin.com / fajri125#';
 });
 
+// Diagnostic route — test S3 connection and PHP config
+Route::get('/check-s3', function () {
+    if (request('key') !== env('APP_KEY')) {
+        abort(403, 'Unauthorized');
+    }
+
+    $results = [];
+
+    // PHP config
+    $results['php_version']         = PHP_VERSION;
+    $results['upload_max_filesize'] = ini_get('upload_max_filesize');
+    $results['post_max_size']       = ini_get('post_max_size');
+    $results['upload_tmp_dir']      = ini_get('upload_tmp_dir') ?: sys_get_temp_dir();
+    $results['tmp_writable']        = is_writable(sys_get_temp_dir());
+
+    // Env vars
+    $results['FILESYSTEM_DISK']           = env('FILESYSTEM_DISK');
+    $results['AWS_DEFAULT_REGION']        = env('AWS_DEFAULT_REGION');
+    $results['AWS_BUCKET']                = env('AWS_BUCKET');
+    $results['AWS_ENDPOINT']              = env('AWS_ENDPOINT');
+    $results['AWS_USE_PATH_STYLE_ENDPOINT'] = env('AWS_USE_PATH_STYLE_ENDPOINT');
+    $results['AWS_KEY_SET']               = !empty(env('AWS_ACCESS_KEY_ID'));
+    $results['AWS_SECRET_SET']            = !empty(env('AWS_SECRET_ACCESS_KEY'));
+
+    // S3 connection test
+    try {
+        $disk = \Illuminate\Support\Facades\Storage::disk('s3');
+        $testFile = 'test-connection-' . time() . '.txt';
+        $disk->put($testFile, 'S3 connection OK');
+        $exists = $disk->exists($testFile);
+        $disk->delete($testFile);
+        $results['s3_write_test'] = $exists ? 'SUCCESS' : 'FAILED (file not found after write)';
+    } catch (\Throwable $e) {
+        $results['s3_write_test'] = 'ERROR: ' . $e->getMessage();
+        $results['s3_error_class'] = get_class($e);
+    }
+
+    return response()->json($results, 200, [], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+});
+
