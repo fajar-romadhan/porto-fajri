@@ -47,7 +47,7 @@
             "dest": "/api/index.php"
         },
         {
-            "src": "/(.*)\.(?:css|js|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|map)",
+            "src": "/(.*)\\.(?:css|js|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|map)",
             "dest": "/public/$1"
         },
         {
