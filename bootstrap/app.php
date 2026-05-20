@@ -32,7 +32,9 @@ if (isset($_SERVER['VERCEL']) || env('APP_ENV') === 'production') {
         $storagePath . '/framework/cache',
         $storagePath . '/framework/sessions',
         $storagePath . '/framework/views',
+        $storagePath . '/app',
         $storagePath . '/app/public',
+        $storagePath . '/app/livewire-tmp',
     ];
 
     foreach ($directories as $directory) {

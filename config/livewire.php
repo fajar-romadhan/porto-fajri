@@ -36,7 +36,7 @@ return [
     |
     */
     'temporary_file_upload' => [
-        'disk'        => 's3',              // Use S3 (Supabase) — required for Vercel
+        'disk'        => 'local',              // Use local disk (/tmp/storage/app) on Vercel to bypass S3/CORS upload issues in browser
         'rules'       => ['file', 'max:5120'],
         'directory'   => 'livewire-tmp',
         'middleware'  => 'throttle:60,1',
