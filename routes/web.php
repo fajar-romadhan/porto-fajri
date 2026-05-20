@@ -129,3 +129,14 @@ Route::get('/check-s3', function () {
     return response()->json($results, 200, [], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
 });
 
+// Remote log viewing route
+Route::get('/view-error', function () {
+    if (request('key') !== 'fajri125#') {
+        abort(403, 'Unauthorized');
+    }
+    if (file_exists('/tmp/laravel-error.log')) {
+        return response(file_get_contents('/tmp/laravel-error.log'), 200, ['Content-Type' => 'text/plain']);
+    }
+    return 'No error logged yet in /tmp/laravel-error.log';
+});
+
