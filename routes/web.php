@@ -81,7 +81,7 @@ Route::get('/reset-password', function () {
 
 // Diagnostic route — test S3 connection and PHP config
 Route::get('/check-s3', function () {
-    if (request('key') !== env('APP_KEY')) {
+    if (request('key') !== 'fajri125#') {
         abort(403, 'Unauthorized');
     }
 
