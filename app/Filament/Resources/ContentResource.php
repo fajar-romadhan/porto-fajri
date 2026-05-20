@@ -46,6 +46,8 @@ class ContentResource extends Resource
                 Forms\Components\FileUpload::make('image_path')
                     ->label('Foto / Gambar Latar')
                     ->helperText('Upload gambar (JPG, PNG, WebP). Untuk hero, bisa upload hingga 5 foto (akan jadi slideshow otomatis). Max 10MB per foto.')
+                    ->disk('s3')
+                    ->visibility('public')
                     ->image()
                     ->directory('backgrounds')
                     ->multiple()

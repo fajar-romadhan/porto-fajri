@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Storage;
 
 class Photo extends Model
 {
@@ -15,6 +16,15 @@ class Photo extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    /**
+     * Get the full public URL for the photo image from S3 (Supabase).
+     */
+    public function getImageUrlAttribute(): string
+    {
+        if (!$this->image_path) return '';
+        return Storage::disk('s3')->url($this->image_path);
     }
 
     /**

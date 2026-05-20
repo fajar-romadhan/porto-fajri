@@ -40,6 +40,8 @@ class PhotoResource extends Resource
                 Forms\Components\FileUpload::make('image_path')
                     ->label('Upload Foto')
                     ->helperText('Upload foto dalam format JPG, PNG, atau WebP. Ukuran maksimal 5MB.')
+                    ->disk('s3')
+                    ->visibility('public')
                     ->image()
                     ->directory('photos')
                     ->imageResizeMode('cover')
@@ -63,6 +65,7 @@ class PhotoResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('image_path')
                     ->label('Preview')
+                    ->disk('s3')
                     ->height(80)
                     ->square(),
 

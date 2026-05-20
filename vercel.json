@@ -58,6 +58,8 @@
         "VIEW_COMPILED_PATH": "/tmp",
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
-        "SESSION_DRIVER": "cookie"
+        "SESSION_DRIVER": "cookie",
+        "FILESYSTEM_DISK": "s3",
+        "AWS_URL": "https://zzzrqowztfmcbudvbqzv.supabase.co/storage/v1/object/public/porto"
     }
 }

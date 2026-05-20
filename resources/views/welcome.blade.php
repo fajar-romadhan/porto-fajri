@@ -19,7 +19,7 @@
             $ogImg = is_array($contents['hero_bg']->image_path) ? ($contents['hero_bg']->image_path[0] ?? '') : $contents['hero_bg']->image_path;
         @endphp
         @if($ogImg)
-        <meta property="og:image" content="{{ asset('storage/' . $ogImg) }}">
+        <meta property="og:image" content="{{ \Illuminate\Support\Facades\Storage::disk('s3')->url($ogImg) }}">
         @endif
     @endif
     <!-- Twitter Card -->
@@ -28,7 +28,7 @@
     <meta name="twitter:description" content="{{ $contents['about_text']->content ?? 'Fotografer profesional yang berfokus pada estetika minimalis. Jasa foto wedding, prewed, wisuda, dan portrait.' }}">
     @if(isset($contents['hero_bg']->image_path))
         @php $twImg = is_array($contents['hero_bg']->image_path) ? ($contents['hero_bg']->image_path[0] ?? '') : $contents['hero_bg']->image_path; @endphp
-        @if($twImg)<meta name="twitter:image" content="{{ asset('storage/' . $twImg) }}">@endif
+        @if($twImg)<meta name="twitter:image" content="{{ \Illuminate\Support\Facades\Storage::disk('s3')->url($twImg) }}">@endif
     @endif
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
@@ -108,10 +108,10 @@
                 $heroImages = [];
                 if(isset($contents['hero_bg']->image_path) && is_array($contents['hero_bg']->image_path)) {
                     foreach($contents['hero_bg']->image_path as $path) {
-                        if($path) $heroImages[] = asset('storage/' . $path);
+                        if($path) $heroImages[] = \Illuminate\Support\Facades\Storage::disk('s3')->url($path);
                     }
                 } elseif(isset($contents['hero_bg']->image_path) && is_string($contents['hero_bg']->image_path)) {
-                    $heroImages[] = asset('storage/' . $contents['hero_bg']->image_path);
+                    $heroImages[] = \Illuminate\Support\Facades\Storage::disk('s3')->url($contents['hero_bg']->image_path);
                 }
                 
                 if(count($heroImages) == 0) {
@@ -151,7 +151,7 @@
                     @forelse($categoriesWithCover as $cat)
                     <div class="category-card" onclick="openCategory('{{ $cat->slug }}', '{{ $cat->name }}')">
                         @if($cat->cover)
-                        <img src="{{ asset('storage/' . $cat->cover->image_path) }}" alt="{{ $cat->name }}" loading="lazy">
+                        <img src="{{ \Illuminate\Support\Facades\Storage::disk('s3')->url($cat->cover->image_path) }}" alt="{{ $cat->name }}" loading="lazy">
                         @else
                         <img src="{{ asset('images/portrait.png') }}" alt="{{ $cat->name }}" loading="lazy">
                         @endif
@@ -198,7 +198,7 @@
             $photosJson = $photosByCategory->map(
                 fn($photos) => $photos->map(fn($p) => [
                     'title'      => $p->title ?? 'Untitled',
-                    'image_path' => asset('storage/' . $p->image_path),
+                    'image_path' => $p->image_url,
                     'category'   => $p->category->name ?? '',
                     'slug'       => $p->category->slug ?? '',
                 ])->values()
@@ -209,7 +209,7 @@
         </script>
 
         <!-- About Section -->
-        <section id="about" class="about-section fade-in-section" style="background-image: url('{{ isset($contents['about_bg']->image_path) ? asset('storage/' . (is_array($contents['about_bg']->image_path) ? ($contents['about_bg']->image_path[0] ?? '') : $contents['about_bg']->image_path)) : 'none' }}'); background-size: cover; background-position: center;">
+        <section id="about" class="about-section fade-in-section" style="background-image: url('{{ isset($contents['about_bg']->image_path) ? \Illuminate\Support\Facades\Storage::disk('s3')->url(is_array($contents['about_bg']->image_path) ? ($contents['about_bg']->image_path[0] ?? '') : $contents['about_bg']->image_path) : 'none' }}'); background-size: cover; background-position: center;">
             <div class="about-overlay"></div>
             <div class="about-content">
                 <h2 class="section-title">About the Lens</h2>
