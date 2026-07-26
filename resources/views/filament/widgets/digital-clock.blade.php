@@ -5,7 +5,24 @@
 @endphp
 
 <x-filament-widgets::widget>
-    <div class="relative overflow-hidden rounded-2xl p-6 sm:p-8 transition-all duration-500 mb-2 border
+    <div x-data="{
+            timeStr: '{{ $initialTime }}',
+            dateStr: '{{ $initialDate }}',
+            init() {
+                this.update();
+                setInterval(() => this.update(), 1000);
+            },
+            update() {
+                const now = new Date();
+                const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+                this.dateStr = now.toLocaleDateString('id-ID', options);
+                const h = String(now.getHours()).padStart(2, '0');
+                const m = String(now.getMinutes()).padStart(2, '0');
+                const s = String(now.getSeconds()).padStart(2, '0');
+                this.timeStr = `${h}:${m}:${s}`;
+            }
+         }"
+         class="relative overflow-hidden rounded-2xl p-6 sm:p-8 transition-all duration-500 mb-2 border
                 bg-white dark:bg-[#12141D] 
                 border-slate-200/90 dark:border-white/10 
                 shadow-xl shadow-slate-200/40 dark:shadow-black/50">
@@ -41,7 +58,7 @@
                         <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span>
                         Live Digital Clock
                     </div>
-                    <h3 id="digital-clock-date" class="text-base font-bold text-slate-900 dark:text-white tracking-wide">
+                    <h3 x-text="dateStr" class="text-base font-bold text-slate-900 dark:text-white tracking-wide">
                         {{ $initialDate }}
                     </h3>
                     <p class="text-xs text-slate-500 dark:text-slate-400">📍 Palembang, Sumatera Selatan (WIB)</p>
@@ -51,7 +68,7 @@
             <!-- Right: Big Digital Clock Display -->
             <div class="flex items-center justify-center">
                 <div class="px-6 py-3 rounded-2xl border bg-slate-50/90 dark:bg-gray-900/90 border-slate-200 dark:border-gray-800 shadow-inner flex items-baseline gap-2">
-                    <span id="digital-clock-digits" class="font-mono text-3xl sm:text-4xl font-extrabold tracking-widest text-slate-900 dark:text-amber-400 drop-shadow">
+                    <span x-text="timeStr" class="font-mono text-3xl sm:text-4xl font-extrabold tracking-widest text-slate-900 dark:text-amber-400 drop-shadow">
                         {{ $initialTime }}
                     </span>
                     <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-gray-400">
@@ -63,7 +80,7 @@
         </div>
     </div>
 
-    <!-- Clock Animation & Ticker Script -->
+    <!-- Clock Animation Styles -->
     <style>
         .clock-second-hand {
             transform-origin: 12px 12px !important;
@@ -82,33 +99,4 @@
             100% { transform: rotate(360deg); }
         }
     </style>
-
-    <script>
-        (function startDigitalClock() {
-            function updateClockDigits() {
-                const dateEl = document.getElementById('digital-clock-date');
-                const timeEl = document.getElementById('digital-clock-digits');
-                if (!timeEl) return;
-
-                const now = new Date();
-                const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
-                if (dateEl) dateEl.innerText = now.toLocaleDateString('id-ID', options);
-
-                const hours = String(now.getHours()).padStart(2, '0');
-                const minutes = String(now.getMinutes()).padStart(2, '0');
-                const seconds = String(now.getSeconds()).padStart(2, '0');
-                timeEl.innerText = `${hours}:${minutes}:${seconds}`;
-            }
-
-            updateClockDigits();
-
-            if (window.studioDigitalClockTimer) {
-                clearInterval(window.studioDigitalClockTimer);
-            }
-            window.studioDigitalClockTimer = setInterval(updateClockDigits, 1000);
-
-            document.addEventListener('livewire:navigated', updateClockDigits);
-            document.addEventListener('DOMContentLoaded', updateClockDigits);
-        })();
-    </script>
 </x-filament-widgets::widget>
