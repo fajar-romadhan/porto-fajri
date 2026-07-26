@@ -30,5 +30,10 @@ class AppServiceProvider extends ServiceProvider
         ) {
             URL::forceScheme('https');
         }
+
+        // Register Activity Observers
+        \App\Models\Photo::observe(\App\Observers\PhotoObserver::class);
+        \App\Models\Category::observe(\App\Observers\CategoryObserver::class);
+        \App\Models\Content::observe(\App\Observers\ContentObserver::class);
     }
 }

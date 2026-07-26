@@ -24,7 +24,7 @@ class Handler extends ExceptionHandler
     public function register(): void
     {
         $this->reportable(function (Throwable $e) {
-            file_put_contents('/tmp/laravel-error.log', $e->getMessage() . "\n" . $e->getTraceAsString());
+            @file_put_contents(sys_get_temp_dir() . '/laravel-error.log', $e->getMessage() . "\n" . $e->getTraceAsString());
         });
     }
 }

@@ -44,6 +44,8 @@ class AdminPanelProvider extends PanelProvider
                 \App\Filament\Widgets\WelcomeBannerWidget::class,
                 \App\Filament\Widgets\DigitalClockWidget::class,
                 \App\Filament\Widgets\DashboardOverview::class,
+                \App\Filament\Widgets\LiveVisitorAnalyticsWidget::class,
+                \App\Filament\Widgets\StorageMonitorWidget::class,
                 \App\Filament\Widgets\AdminGuideWidget::class,
             ])
             ->middleware([
