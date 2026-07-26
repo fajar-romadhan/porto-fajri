@@ -9,12 +9,14 @@ class ContentObserver
 {
     public function updated(Content $content): void
     {
-        ActivityLog::create([
-            'admin_name' => 'Fajri',
-            'action_type' => 'SETTING',
-            'module' => 'Teks Website',
-            'description' => "Perbarui informasi teks website/kontak studio (" . ($content->key ?? 'Teks') . ")",
-            'ip_address' => request()->ip(),
-        ]);
+        try {
+            ActivityLog::create([
+                'admin_name'  => 'Fajri',
+                'action_type' => 'SETTING',
+                'module'      => 'Teks Website',
+                'description' => "Perbarui informasi teks website/kontak studio (" . ($content->key ?? 'Teks') . ")",
+                'ip_address'  => request()->ip(),
+            ]);
+        } catch (\Throwable $e) {}
     }
 }

@@ -35,5 +35,14 @@ class AppServiceProvider extends ServiceProvider
         \App\Models\Photo::observe(\App\Observers\PhotoObserver::class);
         \App\Models\Category::observe(\App\Observers\CategoryObserver::class);
         \App\Models\Content::observe(\App\Observers\ContentObserver::class);
+
+        // Auto-run migrations on production if activity_logs table is missing
+        try {
+            if (!Schema::hasTable('activity_logs')) {
+                \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+            }
+        } catch (\Throwable $e) {
+            // Ignore if migration already ran
+        }
     }
 }
