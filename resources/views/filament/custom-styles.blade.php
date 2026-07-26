@@ -1,10 +1,9 @@
 <style>
     /* ==========================================================================
-       iOS & macOS SYSTEM-WIDE BUTTON & CARD INTERACTION ANIMATIONS
+       FUTURISTIC DEEP OBSIDIAN DARK MODE & LIGHT MODE SYSTEM-WIDE ENFORCEMENT
        ========================================================================== */
 
     /* 1. ANIMASI ENTRANCE BERGULIR SAAT LOGIN / BUKA DASHBOARD */
-    /* Sidebar: Kiri ke Kanan (Slide-in Left) */
     .fi-sidebar, 
     aside.fi-sidebar {
         animation: slideSidebarIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
@@ -12,17 +11,10 @@
     }
 
     @keyframes slideSidebarIn {
-        0% {
-            transform: translateX(-100%);
-            opacity: 0;
-        }
-        100% {
-            transform: translateX(0);
-            opacity: 1;
-        }
+        0% { transform: translateX(-100%); opacity: 0; }
+        100% { transform: translateX(0); opacity: 1; }
     }
 
-    /* Main Content: Kanan ke Kiri (Slide-in Right) */
     .fi-main-ctn, 
     .fi-main, 
     main.fi-main {
@@ -31,18 +23,11 @@
     }
 
     @keyframes slideContentIn {
-        0% {
-            transform: translateX(60px);
-            opacity: 0;
-        }
-        100% {
-            transform: translateX(0);
-            opacity: 1;
-        }
+        0% { transform: translateX(60px); opacity: 0; }
+        100% { transform: translateX(0); opacity: 1; }
     }
 
     /* 2. iOS / macOS GLOBAL BUTTON & CARD MICRO-INTERACTIONS */
-    /* Semua tombol, link, icon-btn, dan kartu mendapat animasi spring khas iOS/macOS */
     button, 
     .fi-btn, 
     .fi-link, 
@@ -59,7 +44,6 @@
         will-change: transform;
     }
 
-    /* macOS Hover Elevation */
     button:hover:not(:disabled), 
     .fi-btn:hover:not(:disabled), 
     .fi-icon-btn:hover:not(:disabled),
@@ -70,7 +54,6 @@
         transform: translateY(-2px) scale(1.02);
     }
 
-    /* iOS Spring Press Down (Tekanan saat diklik/sentuh) */
     button:active:not(:disabled), 
     .fi-btn:active:not(:disabled), 
     .fi-icon-btn:active:not(:disabled),
@@ -81,30 +64,43 @@
         transform: translateY(1px) scale(0.95) !important;
     }
 
-    /* 3. EFEK 3D DEPTH & PERSPECTIVE HOVER UNTUK KARTU WIDGET */
-    .fi-page {
-        perspective: 1200px;
+    /* 3. STRICT DARK MODE COLOR CORRECTION & OBSIDIAN SAAS GLASS SYSTEM */
+    .dark body,
+    .dark .fi-layout,
+    .dark .fi-main {
+        background-color: #0A0B0E !important;
+        color: #F8FAFC !important;
     }
 
-    .fi-wi-stats-overview-stat,
-    .fi-section,
-    .fi-widget {
-        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
-        transform-style: preserve-3d;
-        border-radius: 1.25rem !important;
+    .dark .fi-sidebar {
+        background-color: #0E1017 !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
     }
 
-    /* Stat Cards Adaptive Styling */
-    .fi-wi-stats-overview-stat {
-        background: #FFFFFF !important;
-        border: 1px solid rgba(226, 232, 240, 0.9) !important;
-        box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03), 0 2px 6px -1px rgba(0, 0, 0, 0.02) !important;
+    .dark .fi-widget,
+    .dark .fi-section,
+    .dark .fi-wi-stats-overview-stat,
+    .dark .rounded-2xl {
+        background-color: #12141F !important;
+        border-color: rgba(255, 255, 255, 0.09) !important;
+        color: #F8FAFC !important;
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6), 0 0 1px 1px rgba(255, 255, 255, 0.04) !important;
     }
 
-    .dark .fi-wi-stats-overview-stat {
-        background: #12141D !important;
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
-        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5) !important;
+    /* Strict Text Visibility in Dark Mode */
+    .dark h1, .dark h2, .dark h3, .dark h4, .dark .font-bold, .dark .font-extrabold {
+        color: #FFFFFF !important;
+    }
+
+    .dark p, .dark span.text-slate-600, .dark div.text-slate-600 {
+        color: #94A3B8 !important;
+    }
+
+    .dark .bg-slate-50, 
+    .dark .bg-slate-100 {
+        background-color: rgba(255, 255, 255, 0.05) !important;
+        border-color: rgba(255, 255, 255, 0.08) !important;
+        color: #E2E8F0 !important;
     }
 </style>
 
@@ -113,8 +109,6 @@
     (function initSmartTimeThemeEngine() {
         function evaluateThemeByTime() {
             const hour = new Date().getHours();
-            // Jam 20.00 malam (20) s/d 05.59 pagi (5) -> Otomatis Tema Malam (Dark Mode)
-            // Jam 06.00 pagi (6) s/d 19.59 malam (19) -> Otomatis Tema Terang (Light Mode)
             const isNightTime = (hour >= 20 || hour < 6);
 
             if (isNightTime) {
@@ -129,6 +123,6 @@
         evaluateThemeByTime();
         document.addEventListener('DOMContentLoaded', evaluateThemeByTime);
         document.addEventListener('livewire:navigated', evaluateThemeByTime);
-        setInterval(evaluateThemeByTime, 60000); // Periksa otomatis setiap 60 detik
+        setInterval(evaluateThemeByTime, 60000);
     })();
 </script>
