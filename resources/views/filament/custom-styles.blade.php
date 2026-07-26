@@ -1,6 +1,6 @@
 <style>
     /* ==========================================================================
-       CYBER NEON GLOW & HIGH-TECH GRADIENT DARK MODE SYSTEM
+       BULLETPROOF DARK & LIGHT MODE STUDIO CARD SYSTEM
        ========================================================================== */
 
     /* 1. ENTRANCE ANIMATIONS */
@@ -41,7 +41,71 @@
         transform: translateY(1px) scale(0.95) !important;
     }
 
-    /* 3. FUTURISTIC CYBER NEON DARK MODE OVERRIDES */
+    /* 3. STUDIO CUSTOM CARD STYLING CLASS */
+    .studio-card {
+        background-color: #FFFFFF !important;
+        border: 1px solid rgba(226, 232, 240, 0.9) !important;
+        color: #0F172A !important;
+        box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03) !important;
+    }
+
+    .dark .studio-card {
+        background-color: #121420 !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        color: #F8FAFC !important;
+        box-shadow: 0 10px 35px -10px rgba(0, 0, 0, 0.7), 0 0 1px 1px rgba(255, 255, 255, 0.05) !important;
+    }
+
+    .dark .studio-card::before {
+        content: '' !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 2px !important;
+        border-top-left-radius: 1rem !important;
+        border-top-right-radius: 1rem !important;
+        background: linear-gradient(90deg, #F59E0B, #10B981, #6366F1, #F59E0B) !important;
+        background-size: 200% 100% !important;
+        animation: cyberGradientFlow 6s linear infinite !important;
+        opacity: 0.85 !important;
+        pointer-events: none !important;
+    }
+
+    @keyframes cyberGradientFlow {
+        0% { background-position: 0% 0%; }
+        100% { background-position: 200% 0%; }
+    }
+
+    .studio-subcard {
+        background-color: rgba(248, 250, 252, 0.9) !important;
+        border: 1px solid rgba(226, 232, 240, 0.8) !important;
+        color: #1E293B !important;
+    }
+
+    .dark .studio-subcard {
+        background-color: rgba(17, 24, 39, 0.8) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        color: #F1F5F9 !important;
+    }
+
+    .studio-title {
+        color: #0F172A !important;
+    }
+
+    .dark .studio-title {
+        color: #FFFFFF !important;
+    }
+
+    .studio-desc {
+        color: #475569 !important;
+    }
+
+    .dark .studio-desc {
+        color: #94A3B8 !important;
+    }
+
+    /* 4. GLOBAL DARK BODY OVERRIDES */
     .dark body, .dark .fi-layout, .dark .fi-main {
         background-color: #0A0B0E !important;
         background-image: radial-gradient(rgba(245, 158, 11, 0.12) 1px, transparent 0) !important;
@@ -54,64 +118,19 @@
         border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
     }
 
-    /* Target ONLY top-level Filament Widgets & Stat Overview Cards */
-    .dark .fi-widget > div,
-    .dark .fi-section > div,
     .dark .fi-wi-stats-overview-stat {
         background-color: #121420 !important;
-        border: 1px solid rgba(255, 255, 255, 0.09) !important;
-        position: relative !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
         color: #F8FAFC !important;
-        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7), 0 0 1px 1px rgba(255, 255, 255, 0.04) !important;
     }
 
-    /* Top Cyber Gradient Hairline Accent on Widgets */
-    .dark .fi-widget > div::before,
-    .dark .fi-wi-stats-overview-stat::before {
-        content: '' !important;
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        height: 2px !important;
-        border-top-left-radius: 1rem !important;
-        border-top-right-radius: 1rem !important;
-        background: linear-gradient(90deg, #F59E0B, #10B981, #6366F1, #F59E0B) !important;
-        background-size: 200% 100% !important;
-        animation: cyberGradientFlow 6s linear infinite !important;
-        opacity: 0.8 !important;
-        pointer-events: none !important;
-    }
-
-    @keyframes cyberGradientFlow {
-        0% { background-position: 0% 0%; }
-        100% { background-position: 200% 0%; }
-    }
-
-    /* Card Hover Neon Aura */
-    .dark .fi-widget > div:hover,
-    .dark .fi-wi-stats-overview-stat:hover {
-        box-shadow: 0 14px 40px -10px rgba(245, 158, 11, 0.2), 0 0 20px rgba(16, 185, 129, 0.15) !important;
-    }
-
-    /* Cyber Metallic Gradient Text */
-    .cyber-metallic-text {
-        background: linear-gradient(135deg, #FFFFFF 0%, #FDE68A 50%, #F59E0B 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    /* Strict Text Visibility */
-    .dark h1, .dark h2, .dark h3, .dark h4, .dark .font-bold, .dark .font-extrabold {
+    .dark .fi-wi-stats-overview-stat-label,
+    .dark .fi-wi-stats-overview-stat-value {
         color: #FFFFFF !important;
-    }
-
-    .dark p, .dark span.text-slate-600, .dark div.text-slate-600 {
-        color: #94A3B8 !important;
     }
 </style>
 
-<!-- 4. SMART TIME-BASED AUTO THEME ENGINE -->
+<!-- 5. SMART TIME-BASED AUTO THEME ENGINE -->
 <script>
     (function initSmartTimeThemeEngine() {
         function evaluateThemeByTime() {

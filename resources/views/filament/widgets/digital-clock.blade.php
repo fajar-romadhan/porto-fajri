@@ -22,10 +22,7 @@
                 this.timeStr = `${h}:${m}:${s}`;
             }
          }"
-         class="relative overflow-hidden rounded-2xl p-6 sm:p-8 transition-all duration-500 mb-2 border
-                bg-white dark:!bg-[#12141F] 
-                border-slate-200/90 dark:!border-white/10 
-                shadow-xl shadow-slate-200/40 dark:shadow-black/70">
+         class="studio-card relative overflow-hidden rounded-2xl p-6 sm:p-8 transition-all duration-500 mb-2">
 
         <!-- Background Ambient Glow -->
         <div class="absolute -right-10 -top-10 h-48 w-48 rounded-full bg-amber-500/10 dark:bg-amber-500/20 blur-3xl pointer-events-none"></div>
@@ -55,25 +52,24 @@
                             Live Digital Clock
                         </div>
                         <div x-data="{ isNight: new Date().getHours() >= 20 || new Date().getHours() < 6 }" 
-                             class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-semibold
-                                    bg-slate-100 dark:!bg-gray-800 text-slate-700 dark:!text-gray-300 border border-slate-200 dark:!border-gray-700">
+                             class="studio-subcard inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-semibold">
                             <span x-text="isNight ? '🌙 Auto Tema Malam (20:00+)' : '☀️ Auto Tema Siang'"></span>
                         </div>
                     </div>
-                    <h3 x-text="dateStr" class="text-base font-bold text-slate-900 dark:!text-white tracking-wide">
+                    <h3 x-text="dateStr" class="studio-title text-base font-bold tracking-wide">
                         {{ $initialDate }}
                     </h3>
-                    <p class="text-xs text-slate-500 dark:!text-slate-400">📍 Palembang, Sumatera Selatan (WIB)</p>
+                    <p class="studio-desc text-xs">📍 Palembang, Sumatera Selatan (WIB)</p>
                 </div>
             </div>
 
             <!-- Right: Big Digital Clock Display -->
             <div class="flex items-center justify-center">
-                <div class="px-6 py-3 rounded-2xl border bg-slate-50/90 dark:!bg-gray-900/90 border-slate-200 dark:!border-gray-800 shadow-inner flex items-baseline gap-2">
-                    <span x-text="timeStr" class="font-mono text-3xl sm:text-4xl font-extrabold tracking-widest text-slate-900 dark:!text-amber-400 drop-shadow">
+                <div class="studio-subcard px-6 py-3 rounded-2xl shadow-inner flex items-baseline gap-2">
+                    <span x-text="timeStr" class="font-mono text-3xl sm:text-4xl font-extrabold tracking-widest studio-title dark:!text-amber-400 drop-shadow">
                         {{ $initialTime }}
                     </span>
-                    <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:!text-gray-400">
+                    <span class="studio-desc text-xs font-bold uppercase tracking-wider">
                         WIB
                     </span>
                 </div>
