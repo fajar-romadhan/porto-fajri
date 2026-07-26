@@ -1,42 +1,39 @@
-# Design Spec: Gen Z "Clean Studio Glass" Admin Dashboard Redesign
+# Design Spec: Professional SaaS Admin Dashboard (Linear / Vercel Aesthetic)
 
 ## Overview
-Redesign the Filament Admin Dashboard for Fajri Photography (`/kelola`) to match a modern "Clean Studio Glass" Gen Z aesthetic inspired by iOS/macOS minimalist interfaces. 
-The redesign replaces standard default Filament widgets with custom greeting banners, quick action pills, rounded-2xl glassmorphism stat cards, and an Apple-style interactive tip grid.
+Redesign the Filament Admin Dashboard (`/kelola`) into a world-class professional SaaS platform aesthetic inspired by Linear, Vercel, and Apple Developer portals.
+The design fixes color palette clashes by providing a seamless, unified experience in both **Light Mode** and **Dark Mode**, and adds high-end micro-UX details such as real-time studio clock/date, live cloud connection status, 3D hover dynamics, and spring entrance animations.
 
-## Target User & Greeting
-- Title: **"Selamat Datang, Fajri ⚡"**
-- Subtitle: *"Fajri Photography Studio Dashboard — Kelola portofolio Anda dengan mudah."*
+## Architectural & UX Components
 
-## Architectural Components
+### 1. Theme Color System (Adaptive Light & Dark Mode)
+- **Light Mode**:
+  - Cards: Pure White (`#FFFFFF`) with hairline border (`1px solid #E2E8F0` / `rgba(0,0,0,0.06)`), soft shadow (`box-shadow: 0 4px 20px -2px rgba(0,0,0,0.03)`).
+  - Typography: Deep Charcoal (`#0F172A`) headers, Slate (`#475569`) body, Muted (`#94A3B8`) captions.
+  - Accent: Refined Studio Champagne Gold (`#C5A028`) & Obsidian Slate (`#0F172A`).
+- **Dark Mode**:
+  - Cards: Deep Slate Obsidian (`#12141D`) with hairline border (`1px solid rgba(255,255,255,0.08)`).
+  - Typography: Crisp White (`#F8FAFC`) headers, Muted Gray (`#94A3B8`) body.
+  - Accent: Amber Gold (`#F59E0B`).
 
-### 1. Dashboard Page (`app/Filament/Pages/Dashboard.php`)
-- Title updated dynamically to `"Selamat Datang, Fajri ⚡"`.
-- Registered Widgets: `WelcomeBannerWidget`, `DashboardOverview`, `AdminGuideWidget`.
+### 2. Header & Welcome Banner (`welcome-banner.blade.php`)
+- **Real-Time Clock & Date**: Live JavaScript badge (`🗓️ <Day>, <Date> • <HH:MM> WIB`).
+- **Cloud Health Badge**: Live pulse indicator (`🟢 Cloud Connected • Vercel Edge Active`).
+- **Linear-style Quick Action Pills**:
+  - `[+ Upload Foto]` (Primary Gold pill with inset border & active scale)
+  - `[+ Tambah Kategori]` (Secondary frosted pill)
+  - `[🌐 Lihat Web Live]` (Live site outer link)
 
-### 2. Welcome Banner Widget (`app/Filament/Widgets/WelcomeBannerWidget.php` & `resources/views/filament/widgets/welcome-banner.blade.php`)
-- **Visual Style**: Frosted glass surface (`backdrop-filter: blur(12px)`), soft gold gradient subtle border, rounded-2xl padding.
-- **Quick Action Pills**:
-  - `[+ Upload Foto Baru]` -> Link to `/kelola/photos/create`
-  - `[+ Tambah Kategori]` -> Link to `/kelola/categories/create`
-  - `[🌐 Buka Website Live]` -> Link to `/` (opens live site)
+### 3. Quick Guide Widget (`admin-guide.blade.php`)
+- **Linear/Apple Settings Tip Grid**: 4 micro-cards with rounded icon badges, subtle hover borders, and crisp typography.
 
-### 3. Stat Overview Widget (`app/Filament/Widgets/DashboardOverview.php`)
-- **Visual Style**: Clean rounded 2xl floating cards with smooth hover float effect (`transform: translateY(-2px)`).
-- **Stat 1**: `📸 Total Foto` -> photo count with direct link to photos.
-- **Stat 2**: `🗂️ Kategori Active` -> category count with direct link to categories.
-- **Stat 3**: `🟢 Website Status` -> Live pulse indicator pointing to website root.
-
-### 4. Quick Guide Widget (`app/Filament/Widgets/AdminGuideWidget.php` & `resources/views/filament/widgets/admin-guide.blade.php`)
-- **Visual Style**: Apple Settings / Tips Card Grid with rounded icon badges (`rounded-xl`), soft background contrast, clear typography.
-- **4 Micro Cards**:
-  1. 📂 **Kelola Kategori**: Buat kategori foto terlebih dahulu sebelum upload karya.
-  2. 📸 **Upload Karya**: Bebas upload format 4:6 Portrait & 6:4 / 16:9 Landscape.
-  3. ✍️ **Edit Konten Web**: Atur Teks About, Logo, & Slide Hero Banner.
-  4. 📌 **Sistem Urutan**: Angka terkecil (1, 2, 3) akan tampil paling depan di galeri.
+### 4. Custom Animations & 3D Depth (`custom-styles.blade.php`)
+- **Sidebar Entrance**: Slide-in Left (`translateX(-100%) -> translateX(0)`) duration 0.85s `cubic-bezier(0.16, 1, 0.3, 1)`.
+- **Main Content Entrance**: Slide-in Right (`translateX(70px) -> translateX(0)`) duration 0.95s.
+- **3D Card Perspective**: Perspective 1200px, 3D hover tilt (`translateY(-6px) rotateX(1.8deg) rotateY(-1.5deg)`), 3D icon Z-lift.
 
 ## Verification & Testing Plan
-- Test rendering in Filament Admin (`/kelola`).
-- Check responsive behavior on Mobile and Desktop.
-- Compile assets (`npm run build`).
-- Push to GitHub `main` branch to trigger Vercel deployment.
+- Test rendering in both Light Mode and Dark Mode.
+- Verify real-time clock update via JS.
+- Run `npm run build`.
+- Push to GitHub `main` branch for Vercel deployment.

@@ -1,9 +1,9 @@
 <style>
     /* ==========================================================================
-       GEN Z CLEAN STUDIO GLASS - ANIMATIONS & 3D DEPTH STYLES FOR FILAMENT ADMIN
+       PROFESSIONAL SAAS ADMIN DASHBOARD (LINEAR / VERCEL AESTHETIC)
        ========================================================================== */
 
-    /* 1. ANIMASI ENTRANCE BERGULIR SAAT LOGIN / OPEN DASHBOARD */
+    /* 1. ANIMASI ENTRANCE BERGULIR SAAT LOGIN / BUKA DASHBOARD */
     /* Sidebar: Kiri ke Kanan (Slide-in Left) */
     .fi-sidebar, 
     aside.fi-sidebar {
@@ -32,7 +32,7 @@
 
     @keyframes slideContentIn {
         0% {
-            transform: translateX(70px);
+            transform: translateX(60px);
             opacity: 0;
         }
         100% {
@@ -58,20 +58,28 @@
     .fi-wi-stats-overview-stat:hover,
     .fi-section:hover,
     .fi-widget:hover {
-        transform: translateY(-6px) rotateX(1.8deg) rotateY(-1.5deg) scale(1.008) !important;
-        box-shadow: 0 25px 50px -12px rgba(212, 175, 55, 0.25), 0 10px 25px -5px rgba(0, 0, 0, 0.3) !important;
+        transform: translateY(-5px) rotateX(1.5deg) rotateY(-1.2deg) scale(1.006) !important;
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08), 0 0 20px rgba(197, 160, 40, 0.15) !important;
     }
 
-    /* Stat Cards Ambient Styling */
+    .dark .fi-wi-stats-overview-stat:hover,
+    .dark .fi-section:hover,
+    .dark .fi-widget:hover {
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 25px rgba(245, 158, 11, 0.2) !important;
+    }
+
+    /* Stat Cards Adaptive Styling */
+    /* Light Mode */
     .fi-wi-stats-overview-stat {
-        background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(245,245,245,0.9) 100%) !important;
-        border: 1px solid rgba(212, 175, 55, 0.3) !important;
-        box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05) !important;
+        background: #FFFFFF !important;
+        border: 1px solid rgba(226, 232, 240, 0.8) !important;
+        box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03), 0 2px 6px -1px rgba(0, 0, 0, 0.02) !important;
     }
 
+    /* Dark Mode */
     .dark .fi-wi-stats-overview-stat {
-        background: linear-gradient(135deg, #0d0e15 0%, #161822 100%) !important;
-        border: 1px solid rgba(212, 175, 55, 0.25) !important;
-        box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5) !important;
+        background: #12141D !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5) !important;
     }
 </style>
