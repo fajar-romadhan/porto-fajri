@@ -10,22 +10,22 @@
             <div>
                 <!-- Top Badges Row -->
                 <div class="flex flex-wrap items-center gap-2 mb-3">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase
-                                bg-amber-500/10 border border-amber-500/30 text-amber-700 dark:!text-amber-400">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase
+                                bg-amber-500/20 border border-amber-500/40 text-amber-700 dark:!text-amber-300 shadow-[0_0_14px_rgba(245,158,11,0.35)]">
                         <span class="w-2 h-2 rounded-full bg-amber-500 dark:bg-amber-400 animate-ping"></span>
                         FAJRI Studio Portal
                     </div>
 
                     <!-- Cloud Connection Status -->
-                    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium
-                                bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:!text-emerald-400">
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold
+                                bg-emerald-500/20 border border-emerald-500/40 text-emerald-700 dark:!text-emerald-300 shadow-[0_0_14px_rgba(16,185,129,0.35)]">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                         Cloud Connected • Vercel Active
                     </div>
                 </div>
 
                 <!-- Main Greeting Title -->
-                <h1 class="studio-title text-2xl sm:text-3xl font-extrabold tracking-tight">
+                <h1 class="studio-title text-2xl sm:text-3xl font-extrabold tracking-tight dark:cyber-metallic-text">
                     Yo Fajri! 📸 Porto Kamu Siap Diperbarui.
                 </h1>
                 <p class="studio-desc mt-2 text-sm max-w-xl leading-relaxed">
@@ -33,28 +33,35 @@
                 </p>
             </div>
 
-            <!-- Apple / Linear Minimalist Action Buttons Bar -->
+            <!-- Apple / Linear High-Vibrancy Action Buttons Bar -->
             <div class="flex flex-wrap items-center gap-3">
-                <!-- Primary Action: Gold/Amber Glass Button -->
+                <!-- Primary Action: Vibrant Gold/Amber Glowing Button -->
                 <a href="/kelola/photos/create" 
-                   class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs transition-all duration-300
-                          bg-gradient-to-r from-amber-500 via-amber-600 to-yellow-500 hover:from-amber-400 hover:to-amber-500
-                          text-gray-950 shadow-md hover:-translate-y-0.5 active:scale-95">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                   class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-black text-xs transition-all duration-300
+                          bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-400 hover:from-amber-300 hover:to-amber-400
+                          !text-slate-950 shadow-[0_0_20px_rgba(245,158,11,0.45)] hover:shadow-[0_0_28px_rgba(245,158,11,0.6)]
+                          hover:-translate-y-0.5 active:scale-95">
+                    <svg class="w-4 h-4 text-slate-950 stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
                     <span>Upload Foto</span>
                 </a>
 
-                <!-- Secondary Action: Clean Slate / Dark Glass Button -->
+                <!-- Secondary Action: Neon Indigo Glass Button -->
                 <a href="/kelola/categories/create" 
-                   class="studio-subcard inline-flex items-center gap-2 px-4.5 py-2.5 rounded-xl text-xs font-semibold transition-all duration-300
+                   class="inline-flex items-center gap-2 px-4.5 py-2.5 rounded-xl text-xs font-bold transition-all duration-300
+                          bg-indigo-500/15 hover:bg-indigo-500/25 dark:!bg-indigo-500/20 dark:hover:!bg-indigo-500/35
+                          !text-indigo-600 dark:!text-indigo-300 border border-indigo-500/40 dark:!border-indigo-500/50
+                          shadow-[0_0_15px_rgba(99,102,241,0.2)] hover:shadow-[0_0_22px_rgba(99,102,241,0.35)]
                           hover:-translate-y-0.5 active:scale-95">
-                    <svg class="w-4 h-4 text-amber-500 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+                    <svg class="w-4 h-4 text-indigo-500 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
                     <span>Tambah Kategori</span>
                 </a>
 
-                <!-- Tertiary Action: Glass Outline Link -->
+                <!-- Tertiary Action: Electric Emerald Glass Button -->
                 <a href="/" target="_blank" 
-                   class="studio-subcard inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-medium transition-all duration-300
+                   class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all duration-300
+                          bg-emerald-500/15 hover:bg-emerald-500/25 dark:!bg-emerald-500/20 dark:hover:!bg-emerald-500/35
+                          !text-emerald-600 dark:!text-emerald-300 border border-emerald-500/40 dark:!border-emerald-500/50
+                          shadow-[0_0_15px_rgba(16,185,129,0.2)] hover:shadow-[0_0_22px_rgba(16,185,129,0.35)]
                           hover:-translate-y-0.5 active:scale-95">
                     <svg class="w-4 h-4 text-emerald-500 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                     <span>Lihat Web Live</span>
