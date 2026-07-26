@@ -54,11 +54,10 @@
         border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
     }
 
-    /* Cyber Card Gradient Borders & Glows */
-    .dark .fi-widget,
-    .dark .fi-section,
-    .dark .fi-wi-stats-overview-stat,
-    .dark .rounded-2xl {
+    /* Target ONLY top-level Filament Widgets & Stat Overview Cards */
+    .dark .fi-widget > div,
+    .dark .fi-section > div,
+    .dark .fi-wi-stats-overview-stat {
         background-color: #121420 !important;
         border: 1px solid rgba(255, 255, 255, 0.09) !important;
         position: relative !important;
@@ -66,9 +65,9 @@
         box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7), 0 0 1px 1px rgba(255, 255, 255, 0.04) !important;
     }
 
-    /* Top Cyber Gradient Hairline Accent on Cards */
-    .dark .fi-widget::before,
-    .dark .rounded-2xl::before {
+    /* Top Cyber Gradient Hairline Accent on Widgets */
+    .dark .fi-widget > div::before,
+    .dark .fi-wi-stats-overview-stat::before {
         content: '' !important;
         position: absolute !important;
         top: 0 !important;
@@ -81,6 +80,7 @@
         background-size: 200% 100% !important;
         animation: cyberGradientFlow 6s linear infinite !important;
         opacity: 0.8 !important;
+        pointer-events: none !important;
     }
 
     @keyframes cyberGradientFlow {
@@ -89,8 +89,8 @@
     }
 
     /* Card Hover Neon Aura */
-    .dark .fi-widget:hover,
-    .dark .rounded-2xl:hover {
+    .dark .fi-widget > div:hover,
+    .dark .fi-wi-stats-overview-stat:hover {
         box-shadow: 0 14px 40px -10px rgba(245, 158, 11, 0.2), 0 0 20px rgba(16, 185, 129, 0.15) !important;
     }
 
