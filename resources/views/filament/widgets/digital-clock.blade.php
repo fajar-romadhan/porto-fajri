@@ -21,25 +21,25 @@
                 <!-- Animated SVG Analog Clock Icon -->
                 <div class="relative flex h-14 w-14 items-center justify-center rounded-2xl 
                             bg-amber-500/10 border border-amber-500/30 text-amber-600 dark:text-amber-400 shadow-md">
-                    <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="h-9 w-9 overflow-visible" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <!-- Clock Dial Body -->
-                        <circle cx="12" cy="12" r="9"></circle>
+                        <circle cx="12" cy="12" r="9" class="stroke-amber-600 dark:stroke-amber-400"></circle>
                         <!-- Center Pin -->
-                        <circle cx="12" cy="12" r="1" fill="currentColor"></circle>
+                        <circle cx="12" cy="12" r="1.2" fill="currentColor"></circle>
                         <!-- Hour Hand -->
-                        <line x1="12" y1="12" x2="12" y2="7" stroke-width="2.2" class="clock-hour-hand" style="transform-origin: 12px 12px;"></line>
+                        <line x1="12" y1="12" x2="12" y2="7.5" stroke-width="2.5" class="clock-hour-hand"></line>
                         <!-- Minute Hand -->
-                        <line x1="12" y1="12" x2="16" y2="12" stroke-width="1.8" class="clock-minute-hand" style="transform-origin: 12px 12px;"></line>
+                        <line x1="12" y1="12" x2="15.5" y2="12" stroke-width="2" class="clock-minute-hand"></line>
                         <!-- Rotating Second Hand -->
-                        <line x1="12" y1="12" x2="12" y2="5" stroke="#F59E0B" stroke-width="1.5" class="clock-second-hand" style="transform-origin: 12px 12px;"></line>
+                        <line x1="12" y1="12" x2="12" y2="4.5" stroke="#EF4444" stroke-width="1.8" class="clock-second-hand"></line>
                     </svg>
                 </div>
 
                 <div>
                     <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase
                                 bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-400 mb-1">
-                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-ping"></span>
-                        Real-Time Studio Clock
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span>
+                        Live Digital Clock
                     </div>
                     <h3 id="digital-clock-date" class="text-base font-bold text-slate-900 dark:text-white tracking-wide">
                         {{ $initialDate }}
@@ -50,7 +50,7 @@
 
             <!-- Right: Big Digital Clock Display -->
             <div class="flex items-center justify-center">
-                <div class="px-6 py-3 rounded-2xl border bg-slate-50/80 dark:bg-gray-900/80 border-slate-200 dark:border-gray-800 shadow-inner flex items-baseline gap-2">
+                <div class="px-6 py-3 rounded-2xl border bg-slate-50/90 dark:bg-gray-900/90 border-slate-200 dark:border-gray-800 shadow-inner flex items-baseline gap-2">
                     <span id="digital-clock-digits" class="font-mono text-3xl sm:text-4xl font-extrabold tracking-widest text-slate-900 dark:text-amber-400 drop-shadow">
                         {{ $initialTime }}
                     </span>
@@ -66,20 +66,26 @@
     <!-- Clock Animation & Ticker Script -->
     <style>
         .clock-second-hand {
-            animation: spinSecondHand 60s linear infinite;
+            transform-origin: 12px 12px !important;
+            animation: spinClockHand 60s linear infinite !important;
         }
         .clock-minute-hand {
-            animation: spinSecondHand 3600s linear infinite;
+            transform-origin: 12px 12px !important;
+            animation: spinClockHand 3600s linear infinite !important;
         }
-        @keyframes spinSecondHand {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        .clock-hour-hand {
+            transform-origin: 12px 12px !important;
+            animation: spinClockHand 43200s linear infinite !important;
+        }
+        @keyframes spinClockHand {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 
     <script>
-        (function initDigitalClock() {
-            function tick() {
+        (function startDigitalClock() {
+            function updateClockDigits() {
                 const dateEl = document.getElementById('digital-clock-date');
                 const timeEl = document.getElementById('digital-clock-digits');
                 if (!timeEl) return;
@@ -94,12 +100,15 @@
                 timeEl.innerText = `${hours}:${minutes}:${seconds}`;
             }
 
-            tick();
-            if (!window.studioDigitalClockTimer) {
-                window.studioDigitalClockTimer = setInterval(tick, 1000);
+            updateClockDigits();
+
+            if (window.studioDigitalClockTimer) {
+                clearInterval(window.studioDigitalClockTimer);
             }
-            document.addEventListener('livewire:navigated', tick);
-            document.addEventListener('DOMContentLoaded', tick);
+            window.studioDigitalClockTimer = setInterval(updateClockDigits, 1000);
+
+            document.addEventListener('livewire:navigated', updateClockDigits);
+            document.addEventListener('DOMContentLoaded', updateClockDigits);
         })();
     </script>
 </x-filament-widgets::widget>
