@@ -1,6 +1,6 @@
 <style>
     /* ==========================================================================
-       FAST DYNAMIC CYBER FLUID RGB FLOW SYSTEM (html.dark & html:not(.dark))
+       SUPER-DYNAMIC HUE-ROTATE CYBER NEON RGB SYSTEM (html.dark & html:not(.dark))
        ========================================================================== */
 
     /* 1. ENTRANCE ANIMATIONS */
@@ -67,7 +67,7 @@
         transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
     }
 
-    /* FASTER DYNAMIC STUDIO CYBER FLUID RGB FLOW (3.5s) */
+    /* HIGH-IMPACT HUE-ROTATE CYBER NEON RGB FLOW ON TOP CARD BORDERS (2.5s Spectrum Shift) */
     html.dark .studio-card::before,
     html.dark .fi-widget > div::before,
     html.dark .fi-wi-stats-overview-stat::before {
@@ -76,29 +76,28 @@
         top: 0 !important;
         left: 0 !important;
         right: 0 !important;
-        height: 3.5px !important;
+        height: 4px !important;
         border-top-left-radius: 1rem !important;
         border-top-right-radius: 1rem !important;
-        background: linear-gradient(90deg, #F59E0B, #10B981, #06B6D4, #6366F1, #8B5CF6, #EC4899, #F59E0B) !important;
-        background-size: 300% 300% !important;
-        animation: cyberRgbFlowFast 3.5s linear infinite !important;
-        opacity: 0.95 !important;
+        background: linear-gradient(90deg, #F59E0B, #10B981, #06B6D4, #6366F1, #EC4899, #F59E0B) !important;
+        background-size: 200% 100% !important;
+        animation: cyberHueRotate 2.5s linear infinite !important;
+        opacity: 1 !important;
         pointer-events: none !important;
-        box-shadow: 0 0 12px rgba(245, 158, 11, 0.4) !important;
+        box-shadow: 0 0 14px rgba(245, 158, 11, 0.6), 0 0 25px rgba(6, 182, 212, 0.4) !important;
     }
 
-    @keyframes cyberRgbFlowFast {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
+    @keyframes cyberHueRotate {
+        0% { filter: hue-rotate(0deg); }
+        100% { filter: hue-rotate(360deg); }
     }
 
     /* Card Hover Cyber Aura Glow */
     html.dark .studio-card:hover,
     html.dark .fi-widget > div:hover,
     html.dark .fi-wi-stats-overview-stat:hover {
-        box-shadow: 0 16px 45px -10px rgba(6, 182, 212, 0.35), 0 0 25px rgba(245, 158, 11, 0.3) !important;
-        border-color: rgba(6, 182, 212, 0.45) !important;
+        box-shadow: 0 16px 45px -10px rgba(6, 182, 212, 0.4), 0 0 30px rgba(245, 158, 11, 0.35) !important;
+        border-color: rgba(6, 182, 212, 0.5) !important;
     }
 
     /* Subcards inside widgets */
