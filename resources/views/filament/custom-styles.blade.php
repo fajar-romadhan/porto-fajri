@@ -1,6 +1,6 @@
 <style>
     /* ==========================================================================
-       SMOOTH STUDIO CYBER FLUID RGB FLOW SYSTEM (html.dark & html:not(.dark))
+       FAST DYNAMIC CYBER FLUID RGB FLOW SYSTEM (html.dark & html:not(.dark))
        ========================================================================== */
 
     /* 1. ENTRANCE ANIMATIONS */
@@ -64,10 +64,10 @@
         border: 1px solid rgba(255, 255, 255, 0.12) !important;
         color: #F8FAFC !important;
         box-shadow: 0 10px 35px -10px rgba(0, 0, 0, 0.8), 0 0 1px 1px rgba(255, 255, 255, 0.05) !important;
-        transition: border-color 0.4s ease, box-shadow 0.4s ease !important;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
     }
 
-    /* SMOOTH STUDIO CYBER FLUID RGB FLOW ON TOP CARD BORDERS */
+    /* FASTER DYNAMIC STUDIO CYBER FLUID RGB FLOW (3.5s) */
     html.dark .studio-card::before,
     html.dark .fi-widget > div::before,
     html.dark .fi-wi-stats-overview-stat::before {
@@ -76,17 +76,18 @@
         top: 0 !important;
         left: 0 !important;
         right: 0 !important;
-        height: 3px !important;
+        height: 3.5px !important;
         border-top-left-radius: 1rem !important;
         border-top-right-radius: 1rem !important;
         background: linear-gradient(90deg, #F59E0B, #10B981, #06B6D4, #6366F1, #8B5CF6, #EC4899, #F59E0B) !important;
         background-size: 300% 300% !important;
-        animation: cyberRgbFlow 10s ease infinite !important;
+        animation: cyberRgbFlowFast 3.5s linear infinite !important;
         opacity: 0.95 !important;
         pointer-events: none !important;
+        box-shadow: 0 0 12px rgba(245, 158, 11, 0.4) !important;
     }
 
-    @keyframes cyberRgbFlow {
+    @keyframes cyberRgbFlowFast {
         0% { background-position: 0% 50%; }
         50% { background-position: 100% 50%; }
         100% { background-position: 0% 50%; }
@@ -96,8 +97,8 @@
     html.dark .studio-card:hover,
     html.dark .fi-widget > div:hover,
     html.dark .fi-wi-stats-overview-stat:hover {
-        box-shadow: 0 16px 45px -10px rgba(6, 182, 212, 0.25), 0 0 25px rgba(245, 158, 11, 0.2) !important;
-        border-color: rgba(6, 182, 212, 0.35) !important;
+        box-shadow: 0 16px 45px -10px rgba(6, 182, 212, 0.35), 0 0 25px rgba(245, 158, 11, 0.3) !important;
+        border-color: rgba(6, 182, 212, 0.45) !important;
     }
 
     /* Subcards inside widgets */
