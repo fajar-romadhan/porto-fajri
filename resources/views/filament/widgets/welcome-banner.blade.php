@@ -76,20 +76,22 @@
 
     <!-- Live Clock JavaScript Script -->
     <script>
-        (function updateClock() {
-            const clockEl = document.getElementById('live-studio-clock');
-            if (!clockEl) return;
-
+        (function initClock() {
             function render() {
+                const clockEl = document.getElementById('live-studio-clock');
+                if (!clockEl) return;
                 const now = new Date();
-                const options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' };
+                const options = { weekday: 'short', day: 'numeric', month: 'short' };
                 const dateStr = now.toLocaleDateString('id-ID', options);
-                const timeStr = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                const timeStr = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
                 clockEl.innerHTML = `🗓️ ${dateStr} • ${timeStr} WIB`;
             }
-
             render();
-            setInterval(render, 1000);
+            if (!window.studioClockInterval) {
+                window.studioClockInterval = setInterval(render, 1000);
+            }
+            document.addEventListener('livewire:navigated', render);
+            document.addEventListener('DOMContentLoaded', render);
         })();
     </script>
 </x-filament-widgets::widget>
