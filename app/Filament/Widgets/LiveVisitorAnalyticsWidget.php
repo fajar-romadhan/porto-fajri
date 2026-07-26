@@ -3,8 +3,8 @@
 namespace App\Filament\Widgets;
 
 use Filament\Widgets\Widget;
-use App\Models\Photo;
-use App\Models\Category;
+use App\Models\VisitorSession;
+use Illuminate\Support\Carbon;
 
 class LiveVisitorAnalyticsWidget extends Widget
 {
@@ -20,6 +20,20 @@ class LiveVisitorAnalyticsWidget extends Widget
         return [
             'default' => 'full',
             'md'      => 2,
+        ];
+    }
+
+    protected function getViewData(): array
+    {
+        // Track current admin's heartbeat ping
+        VisitorSession::track();
+
+        $activeVisitors = VisitorSession::getActiveCount();
+        $totalViews     = VisitorSession::getTotalViews();
+
+        return [
+            'activeVisitors' => $activeVisitors,
+            'totalViews'     => number_format($totalViews, 0, ',', '.') . 'x',
         ];
     }
 }

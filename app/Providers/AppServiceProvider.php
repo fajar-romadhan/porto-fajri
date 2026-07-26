@@ -36,9 +36,9 @@ class AppServiceProvider extends ServiceProvider
         \App\Models\Category::observe(\App\Observers\CategoryObserver::class);
         \App\Models\Content::observe(\App\Observers\ContentObserver::class);
 
-        // Auto-run migrations on production if activity_logs table is missing
+        // Auto-run migrations on production if tables are missing
         try {
-            if (!Schema::hasTable('activity_logs')) {
+            if (!Schema::hasTable('activity_logs') || !Schema::hasTable('visitor_sessions')) {
                 \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
             }
         } catch (\Throwable $e) {
