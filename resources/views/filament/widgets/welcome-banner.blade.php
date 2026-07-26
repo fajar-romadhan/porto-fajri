@@ -1,3 +1,8 @@
+@php
+    \Carbon\Carbon::setLocale('id');
+    $initialClock = \Carbon\Carbon::now('Asia/Jakarta')->isoFormat('ddd, D MMM • HH:mm') . ' WIB';
+@endphp
+
 <x-filament-widgets::widget>
     <!-- Adaptive Card Container for Light Mode & Dark Mode -->
     <div class="relative overflow-hidden rounded-2xl p-6 sm:p-8 transition-all duration-500 mb-2 border
@@ -29,7 +34,7 @@
                     <!-- Real-Time Clock Badge -->
                     <div id="live-studio-clock" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium
                                 bg-slate-100 dark:bg-gray-800/80 border border-slate-200 dark:border-gray-700 text-slate-600 dark:text-gray-300">
-                        🗓️ Memuat waktu...
+                        🗓️ {{ $initialClock }}
                     </div>
                 </div>
 
