@@ -4,23 +4,16 @@ namespace App\Filament\Widgets;
 
 use Filament\Widgets\Widget;
 use App\Models\VisitorSession;
-use Illuminate\Support\Carbon;
 
 class LiveVisitorAnalyticsWidget extends Widget
 {
     protected static bool $isDiscovered = false;
     protected static string $view       = 'filament.widgets.live-visitor-analytics';
-    protected int | string | array $columnSpan = [
-        'default' => 'full',
-        'md'      => 2,
-    ];
+    protected int | string | array $columnSpan = 'full';
 
     public function getColumnSpan(): int | string | array
     {
-        return [
-            'default' => 'full',
-            'md'      => 2,
-        ];
+        return 'full';
     }
 
     protected function getViewData(): array
