@@ -1,6 +1,6 @@
 <style>
     /* ==========================================================================
-       PROFESSIONAL SAAS ADMIN DASHBOARD (LINEAR / VERCEL AESTHETIC)
+       iOS & macOS SYSTEM-WIDE BUTTON & CARD INTERACTION ANIMATIONS
        ========================================================================== */
 
     /* 1. ANIMASI ENTRANCE BERGULIR SAAT LOGIN / BUKA DASHBOARD */
@@ -41,7 +41,47 @@
         }
     }
 
-    /* 2. EFEK 3D DEPTH & PERSPECTIVE HOVER UNTUK KARTU & WIDGET */
+    /* 2. iOS / macOS GLOBAL BUTTON & CARD MICRO-INTERACTIONS */
+    /* Semua tombol, link, icon-btn, dan kartu mendapat animasi spring khas iOS/macOS */
+    button, 
+    .fi-btn, 
+    .fi-link, 
+    .fi-icon-btn,
+    .fi-sidebar-item-button,
+    .fi-modal-close-btn,
+    a.inline-flex,
+    .ios-button,
+    .ios-card {
+        transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                    box-shadow 0.25s ease, 
+                    background-color 0.25s ease, 
+                    border-color 0.25s ease !important;
+        will-change: transform;
+    }
+
+    /* macOS Hover Elevation */
+    button:hover:not(:disabled), 
+    .fi-btn:hover:not(:disabled), 
+    .fi-icon-btn:hover:not(:disabled),
+    .fi-sidebar-item-button:hover,
+    a.inline-flex:hover,
+    .ios-button:hover,
+    .ios-card:hover {
+        transform: translateY(-2px) scale(1.02);
+    }
+
+    /* iOS Spring Press Down (Tekanan saat diklik/sentuh) */
+    button:active:not(:disabled), 
+    .fi-btn:active:not(:disabled), 
+    .fi-icon-btn:active:not(:disabled),
+    .fi-sidebar-item-button:active,
+    a.inline-flex:active,
+    .ios-button:active,
+    .ios-card:active {
+        transform: translateY(1px) scale(0.95) !important;
+    }
+
+    /* 3. EFEK 3D DEPTH & PERSPECTIVE HOVER UNTUK KARTU WIDGET */
     .fi-page {
         perspective: 1200px;
     }
@@ -54,29 +94,13 @@
         border-radius: 1.25rem !important;
     }
 
-    /* 3D Lift & Rotation on Hover */
-    .fi-wi-stats-overview-stat:hover,
-    .fi-section:hover,
-    .fi-widget:hover {
-        transform: translateY(-5px) rotateX(1.5deg) rotateY(-1.2deg) scale(1.006) !important;
-        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08), 0 0 20px rgba(197, 160, 40, 0.15) !important;
-    }
-
-    .dark .fi-wi-stats-overview-stat:hover,
-    .dark .fi-section:hover,
-    .dark .fi-widget:hover {
-        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 25px rgba(245, 158, 11, 0.2) !important;
-    }
-
     /* Stat Cards Adaptive Styling */
-    /* Light Mode */
     .fi-wi-stats-overview-stat {
         background: #FFFFFF !important;
-        border: 1px solid rgba(226, 232, 240, 0.8) !important;
+        border: 1px solid rgba(226, 232, 240, 0.9) !important;
         box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03), 0 2px 6px -1px rgba(0, 0, 0, 0.02) !important;
     }
 
-    /* Dark Mode */
     .dark .fi-wi-stats-overview-stat {
         background: #12141D !important;
         border: 1px solid rgba(255, 255, 255, 0.08) !important;
