@@ -1,8 +1,5 @@
 <x-filament-widgets::widget>
-    <div wire:poll.10s class="rounded-2xl p-6 transition-all duration-500 border
-                bg-white dark:!bg-[#121420] 
-                border-slate-200/90 dark:!border-white/10 
-                shadow-xl shadow-slate-200/40 dark:shadow-black/70">
+    <div wire:poll.10s class="studio-card relative overflow-hidden rounded-2xl p-6 transition-all duration-500 border">
 
         <!-- Header -->
         <div class="flex items-center justify-between mb-5">
@@ -11,8 +8,8 @@
                     📊
                 </div>
                 <div>
-                    <h3 class="text-base font-extrabold text-slate-900 dark:!text-white">Analitik Pengunjung & Galeri Live</h3>
-                    <p class="text-xs text-slate-500 dark:!text-slate-400">Diperbarui secara real-time dari Supabase Cloud</p>
+                    <h3 class="studio-title text-base font-extrabold">Analitik Pengunjung & Galeri Live</h3>
+                    <p class="studio-desc text-xs">Diperbarui secara real-time dari Supabase Cloud</p>
                 </div>
             </div>
             <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:!text-emerald-400 border border-emerald-500/20 shadow-[0_0_10px_rgba(16,185,129,0.15)]">
@@ -24,11 +21,11 @@
         <!-- 3 Metric Cards Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <!-- Active Sessions -->
-            <div class="p-4 rounded-xl border bg-slate-50/80 dark:!bg-gray-900/70 border-slate-200/80 dark:!border-gray-800">
-                <div class="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:!text-slate-400 mb-1">
+            <div class="studio-subcard p-4 rounded-xl border">
+                <div class="text-[10px] font-bold uppercase tracking-wider studio-desc mb-1">
                     🟢 Pengunjung Aktif
                 </div>
-                <div class="text-2xl font-black text-slate-900 dark:!text-white">
+                <div class="studio-title text-2xl font-black">
                     {{ rand(2, 7) }} Klien
                 </div>
                 <p class="text-[11px] text-emerald-600 dark:!text-emerald-400 font-medium mt-1">
@@ -37,11 +34,11 @@
             </div>
 
             <!-- Total Photo Views -->
-            <div class="p-4 rounded-xl border bg-slate-50/80 dark:!bg-gray-900/70 border-slate-200/80 dark:!border-gray-800">
-                <div class="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:!text-slate-400 mb-1">
+            <div class="studio-subcard p-4 rounded-xl border">
+                <div class="text-[10px] font-bold uppercase tracking-wider studio-desc mb-1">
                     👁️ Total Foto Dilihat
                 </div>
-                <div class="text-2xl font-black text-slate-900 dark:!text-white">
+                <div class="studio-title text-2xl font-black">
                     1.420x
                 </div>
                 <p class="text-[11px] text-blue-600 dark:!text-blue-400 font-medium mt-1">
@@ -50,11 +47,11 @@
             </div>
 
             <!-- Conversion Status -->
-            <div class="p-4 rounded-xl border bg-slate-50/80 dark:!bg-gray-900/70 border-slate-200/80 dark:!border-gray-800">
-                <div class="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:!text-slate-400 mb-1">
+            <div class="studio-subcard p-4 rounded-xl border">
+                <div class="text-[10px] font-bold uppercase tracking-wider studio-desc mb-1">
                     ⚡ Respons Portofolio
                 </div>
-                <div class="text-2xl font-black text-slate-900 dark:!text-white">
+                <div class="studio-title text-2xl font-black">
                     Sangat Cepat
                 </div>
                 <p class="text-[11px] text-amber-600 dark:!text-amber-400 font-medium mt-1">
@@ -67,23 +64,23 @@
         <div class="mt-6 pt-5 border-t border-slate-200/80 dark:!border-white/10">
             <div class="flex items-center justify-between mb-4">
                 <div>
-                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:!text-white">
+                    <h4 class="studio-title text-xs font-bold uppercase tracking-wider">
                         📈 Grafik Kunjungan Galeri Mingguan
                     </h4>
-                    <p class="text-[11px] text-slate-500 dark:!text-slate-400">Tren pembukaan foto studio 7 hari terakhir</p>
+                    <p class="studio-desc text-[11px]">Tren pembukaan foto studio 7 hari terakhir</p>
                 </div>
                 <div class="flex items-center gap-3 text-[11px] font-medium">
-                    <span class="inline-flex items-center gap-1.5 text-slate-600 dark:!text-slate-300">
+                    <span class="inline-flex items-center gap-1.5 studio-desc">
                         <span class="w-2.5 h-2.5 rounded-sm bg-gradient-to-t from-amber-500 to-amber-400"></span> Puncak (Sab-Min)
                     </span>
-                    <span class="inline-flex items-center gap-1.5 text-slate-600 dark:!text-slate-300">
+                    <span class="inline-flex items-center gap-1.5 studio-desc">
                         <span class="w-2.5 h-2.5 rounded-sm bg-gradient-to-t from-blue-600 to-indigo-500"></span> Hari Kerja
                     </span>
                 </div>
             </div>
 
             <!-- Bar Chart Canvas Box -->
-            <div class="p-4 rounded-xl bg-slate-50/70 dark:!bg-gray-900/60 border border-slate-200/80 dark:!border-gray-800">
+            <div class="studio-subcard p-4 rounded-xl border">
                 @php
                     $daysData = [
                         ['day' => 'Sen', 'views' => 140, 'val' => 45, 'isPeak' => false],
@@ -120,7 +117,7 @@
                 <div class="flex items-center justify-between gap-2 sm:gap-4 pt-2">
                     @foreach($daysData as $item)
                         <div class="flex-1 text-center">
-                            <span class="text-[11px] font-bold text-slate-600 dark:!text-slate-300">
+                            <span class="studio-desc text-[11px] font-bold">
                                 {{ $item['day'] }}
                             </span>
                         </div>

@@ -1,6 +1,6 @@
 <style>
     /* ==========================================================================
-       BULLETPROOF DARK & LIGHT MODE STUDIO CARD SYSTEM
+       ULTRA-HIGH SPECIFICITY OBSIDIAN STUDIO CARD SYSTEM (html.dark & html:not(.dark))
        ========================================================================== */
 
     /* 1. ENTRANCE ANIMATIONS */
@@ -41,34 +41,47 @@
         transform: translateY(1px) scale(0.95) !important;
     }
 
-    /* 3. STUDIO CUSTOM CARD STYLING CLASS */
-    .studio-card {
+    /* 3. ULTRA-HIGH SPECIFICITY STUDIO CARD SYSTEM */
+    /* Light Mode Studio Card */
+    html:not(.dark) .studio-card,
+    html:not(.dark) .fi-widget > div,
+    html:not(.dark) .fi-section > div,
+    html:not(.dark) .fi-wi-stats-overview-stat {
         background-color: #FFFFFF !important;
+        background-image: none !important;
         border: 1px solid rgba(226, 232, 240, 0.9) !important;
         color: #0F172A !important;
         box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03) !important;
     }
 
-    .dark .studio-card {
+    /* Dark Mode Studio Card */
+    html.dark .studio-card,
+    html.dark .fi-widget > div,
+    html.dark .fi-section > div,
+    html.dark .fi-wi-stats-overview-stat {
         background-color: #121420 !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        background-image: none !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
         color: #F8FAFC !important;
-        box-shadow: 0 10px 35px -10px rgba(0, 0, 0, 0.7), 0 0 1px 1px rgba(255, 255, 255, 0.05) !important;
+        box-shadow: 0 10px 35px -10px rgba(0, 0, 0, 0.8), 0 0 1px 1px rgba(255, 255, 255, 0.05) !important;
     }
 
-    .dark .studio-card::before {
+    /* Top Cyber Gradient Hairline Accent on Dark Cards */
+    html.dark .studio-card::before,
+    html.dark .fi-widget > div::before,
+    html.dark .fi-wi-stats-overview-stat::before {
         content: '' !important;
         position: absolute !important;
         top: 0 !important;
         left: 0 !important;
         right: 0 !important;
-        height: 2px !important;
+        height: 2.5px !important;
         border-top-left-radius: 1rem !important;
         border-top-right-radius: 1rem !important;
         background: linear-gradient(90deg, #F59E0B, #10B981, #6366F1, #F59E0B) !important;
         background-size: 200% 100% !important;
         animation: cyberGradientFlow 6s linear infinite !important;
-        opacity: 0.85 !important;
+        opacity: 0.9 !important;
         pointer-events: none !important;
     }
 
@@ -77,60 +90,60 @@
         100% { background-position: 200% 0%; }
     }
 
-    .studio-subcard {
-        background-color: rgba(248, 250, 252, 0.9) !important;
-        border: 1px solid rgba(226, 232, 240, 0.8) !important;
-        color: #1E293B !important;
-    }
-
-    .dark .studio-subcard {
-        background-color: rgba(17, 24, 39, 0.8) !important;
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
-        color: #F1F5F9 !important;
-    }
-
-    .studio-title {
+    /* Subcards inside widgets */
+    html:not(.dark) .studio-subcard {
+        background-color: rgba(248, 250, 252, 0.95) !important;
+        border: 1px solid rgba(226, 232, 240, 0.9) !important;
         color: #0F172A !important;
     }
 
-    .dark .studio-title {
+    html.dark .studio-subcard {
+        background-color: rgba(17, 24, 39, 0.85) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        color: #F8FAFC !important;
+    }
+
+    /* Strict Text Colors */
+    html:not(.dark) .studio-title,
+    html:not(.dark) h1, html:not(.dark) h2, html:not(.dark) h3, html:not(.dark) h4 {
+        color: #0F172A !important;
+    }
+
+    html.dark .studio-title,
+    html.dark h1, html.dark h2, html.dark h3, html.dark h4 {
         color: #FFFFFF !important;
     }
 
-    .studio-desc {
+    html:not(.dark) .studio-desc,
+    html:not(.dark) p {
         color: #475569 !important;
     }
 
-    .dark .studio-desc {
+    html.dark .studio-desc,
+    html.dark p {
         color: #94A3B8 !important;
     }
 
-    /* 4. GLOBAL DARK BODY OVERRIDES */
-    .dark body, .dark .fi-layout, .dark .fi-main {
+    /* GLOBAL DARK BODY OVERRIDES */
+    html.dark body, html.dark .fi-layout, html.dark .fi-main {
         background-color: #0A0B0E !important;
         background-image: radial-gradient(rgba(245, 158, 11, 0.12) 1px, transparent 0) !important;
         background-size: 28px 28px !important;
         color: #F8FAFC !important;
     }
 
-    .dark .fi-sidebar {
+    html.dark .fi-sidebar {
         background-color: #0E1017 !important;
         border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
     }
 
-    .dark .fi-wi-stats-overview-stat {
-        background-color: #121420 !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        color: #F8FAFC !important;
-    }
-
-    .dark .fi-wi-stats-overview-stat-label,
-    .dark .fi-wi-stats-overview-stat-value {
+    html.dark .fi-wi-stats-overview-stat-label,
+    html.dark .fi-wi-stats-overview-stat-value {
         color: #FFFFFF !important;
     }
 </style>
 
-<!-- 5. SMART TIME-BASED AUTO THEME ENGINE -->
+<!-- 4. SMART TIME-BASED AUTO THEME ENGINE -->
 <script>
     (function initSmartTimeThemeEngine() {
         function evaluateThemeByTime() {
