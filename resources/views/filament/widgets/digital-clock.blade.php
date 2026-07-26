@@ -44,7 +44,7 @@
                     <h3 id="digital-clock-date" class="text-base font-bold text-slate-900 dark:text-white tracking-wide">
                         {{ $initialDate }}
                     </h3>
-                    <p class="text-xs text-slate-500 dark:text-slate-400">Asia/Jakarta (WIB) Timezone</p>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">📍 Palembang, Sumatera Selatan (WIB)</p>
                 </div>
             </div>
 
