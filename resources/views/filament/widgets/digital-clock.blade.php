@@ -53,10 +53,17 @@
                 </div>
 
                 <div>
-                    <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase
-                                bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-400 mb-1">
-                        <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span>
-                        Live Digital Clock
+                    <div class="flex flex-wrap items-center gap-2 mb-1">
+                        <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase
+                                    bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-400">
+                            <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span>
+                            Live Digital Clock
+                        </div>
+                        <div x-data="{ isNight: new Date().getHours() >= 20 || new Date().getHours() < 6 }" 
+                             class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-semibold
+                                    bg-slate-100 dark:bg-gray-800 text-slate-700 dark:text-gray-300 border border-slate-200 dark:border-gray-700">
+                            <span x-text="isNight ? '🌙 Auto Tema Malam (20:00+)' : '☀️ Auto Tema Siang'"></span>
+                        </div>
                     </div>
                     <h3 x-text="dateStr" class="text-base font-bold text-slate-900 dark:text-white tracking-wide">
                         {{ $initialDate }}

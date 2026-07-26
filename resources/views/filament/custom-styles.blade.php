@@ -107,3 +107,28 @@
         box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5) !important;
     }
 </style>
+
+<!-- 4. SMART TIME-BASED AUTO THEME ENGINE (06:00 - 19:59 Light, 20:00 - 05:59 Dark) -->
+<script>
+    (function initSmartTimeThemeEngine() {
+        function evaluateThemeByTime() {
+            const hour = new Date().getHours();
+            // Jam 20.00 malam (20) s/d 05.59 pagi (5) -> Otomatis Tema Malam (Dark Mode)
+            // Jam 06.00 pagi (6) s/d 19.59 malam (19) -> Otomatis Tema Terang (Light Mode)
+            const isNightTime = (hour >= 20 || hour < 6);
+
+            if (isNightTime) {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        evaluateThemeByTime();
+        document.addEventListener('DOMContentLoaded', evaluateThemeByTime);
+        document.addEventListener('livewire:navigated', evaluateThemeByTime);
+        setInterval(evaluateThemeByTime, 60000); // Periksa otomatis setiap 60 detik
+    })();
+</script>
