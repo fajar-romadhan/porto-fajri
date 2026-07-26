@@ -41,6 +41,7 @@ class AdminPanelProvider extends PanelProvider
                 \App\Filament\Pages\Dashboard::class,
             ])
             ->widgets([
+                \App\Filament\Widgets\WelcomeBannerWidget::class,
                 \App\Filament\Widgets\DashboardOverview::class,
                 \App\Filament\Widgets\AdminGuideWidget::class,
             ])
