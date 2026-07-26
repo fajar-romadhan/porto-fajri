@@ -42,6 +42,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->widgets([
                 \App\Filament\Widgets\WelcomeBannerWidget::class,
+                \App\Filament\Widgets\DigitalClockWidget::class,
                 \App\Filament\Widgets\DashboardOverview::class,
                 \App\Filament\Widgets\AdminGuideWidget::class,
             ])

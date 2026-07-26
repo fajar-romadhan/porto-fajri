@@ -3,6 +3,7 @@
 namespace App\Filament\Pages;
 
 use App\Filament\Widgets\WelcomeBannerWidget;
+use App\Filament\Widgets\DigitalClockWidget;
 use App\Filament\Widgets\DashboardOverview;
 use App\Filament\Widgets\AdminGuideWidget;
 use Filament\Pages\Dashboard as BaseDashboard;
@@ -21,6 +22,7 @@ class Dashboard extends BaseDashboard
     {
         return [
             WelcomeBannerWidget::class,
+            DigitalClockWidget::class,
             DashboardOverview::class,
             AdminGuideWidget::class,
         ];

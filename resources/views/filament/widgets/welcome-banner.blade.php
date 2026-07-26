@@ -30,12 +30,6 @@
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                         Cloud Connected • Vercel Active
                     </div>
-
-                    <!-- Real-Time Clock Badge -->
-                    <div id="live-studio-clock" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium
-                                bg-slate-100 dark:bg-gray-800/80 border border-slate-200 dark:border-gray-700 text-slate-600 dark:text-gray-300">
-                        🗓️ {{ $initialClock }}
-                    </div>
                 </div>
 
                 <!-- Main Greeting Title -->
@@ -78,25 +72,4 @@
             </div>
         </div>
     </div>
-
-    <!-- Live Clock JavaScript Script -->
-    <script>
-        (function initClock() {
-            function render() {
-                const clockEl = document.getElementById('live-studio-clock');
-                if (!clockEl) return;
-                const now = new Date();
-                const options = { weekday: 'short', day: 'numeric', month: 'short' };
-                const dateStr = now.toLocaleDateString('id-ID', options);
-                const timeStr = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
-                clockEl.innerHTML = `🗓️ ${dateStr} • ${timeStr} WIB`;
-            }
-            render();
-            if (!window.studioClockInterval) {
-                window.studioClockInterval = setInterval(render, 1000);
-            }
-            document.addEventListener('livewire:navigated', render);
-            document.addEventListener('DOMContentLoaded', render);
-        })();
-    </script>
 </x-filament-widgets::widget>
