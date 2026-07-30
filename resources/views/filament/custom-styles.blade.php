@@ -3,25 +3,49 @@
        SUPER-DYNAMIC HUE-ROTATE CYBER NEON RGB SYSTEM (html.dark & html:not(.dark))
        ========================================================================== */
 
-    /* 1. ENTRANCE ANIMATIONS */
-    .fi-sidebar, aside.fi-sidebar {
-        animation: slideSidebarIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
-        will-change: transform, opacity;
+    /* 1. ENTRANCE ANIMATIONS (DESKTOP ONLY - Preserve Mobile Drawer UX) */
+    @media (min-width: 1024px) {
+        .fi-sidebar, aside.fi-sidebar {
+            animation: slideSidebarIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+            will-change: transform, opacity;
+        }
+
+        @keyframes slideSidebarIn {
+            0% { transform: translateX(-100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        .fi-main-ctn, .fi-main, main.fi-main {
+            animation: slideContentIn 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+            will-change: transform, opacity;
+        }
+
+        @keyframes slideContentIn {
+            0% { transform: translateX(60px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
     }
 
-    @keyframes slideSidebarIn {
-        0% { transform: translateX(-100%); opacity: 0; }
-        100% { transform: translateX(0); opacity: 1; }
-    }
+    /* 1b. MOBILE SPECIFIC UI/UX OPTIMIZATIONS (<1024px) */
+    @media (max-width: 1023px) {
+        /* Ensure main container takes 100% full width on mobile screens */
+        .fi-main-ctn, .fi-main, main.fi-main {
+            width: 100% !important;
+            max-width: 100% !important;
+            padding-left: 0.75rem !important;
+            padding-right: 0.75rem !important;
+        }
 
-    .fi-main-ctn, .fi-main, main.fi-main {
-        animation: slideContentIn 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
-        will-change: transform, opacity;
-    }
+        /* Prevent form card overflow and allow clean full-width input fields */
+        .fi-fo-field-wrp, .fi-input-wrp, .fi-select-input {
+            width: 100% !important;
+        }
 
-    @keyframes slideContentIn {
-        0% { transform: translateX(60px); opacity: 0; }
-        100% { transform: translateX(0); opacity: 1; }
+        /* Ensure tables are horizontally scrollable on small mobile displays */
+        .fi-ta-content {
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch;
+        }
     }
 
     /* 2. iOS / macOS & CYBER SPRING PRESS ANIMATIONS */
